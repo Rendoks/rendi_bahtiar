@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Bahtiar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Variables */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --success-color: #2ecc71;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+   url('image/foto.jpg') no-repeat center center / cover;
+  color: white;
+  padding: 0 1rem;
+}
+
+
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 1rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-img {
+            flex: 0.5 ;
+            min-width: 300px;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            transition: bottom 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                background: var(--secondary-color);
+                width: 100%;
+                flex-direction: column;
+                padding: 1rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Rendi Bahtiar Pratama</div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Tentang Saya </a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Exsperience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero" >
+        <div class="hero-content background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1555949963-aa79dcee981d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') 
+                no-repeat center center / cover;">
+            <h1>Haloo, Saya <span style="color: var(--primary-color);">Rendi Bahtiar Pratama</span></h1>
+            <a href="#portfolio" class="btn">My Experience</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">Tentang Saya</h2>
+        <div class="about-content">
+            <div class="about-img">
+                <img src="C:/Users/MyBook Hype AMD/Downloads/foto formal.jpeg" alt="Rendi Bahtiar foto">
+            </div>
+            <div class="about-text">
+                <h3>Who Am I?</h3>
+                <p class="text-lg mb-4 text-justify">
+                    Saya adalah mahasiswa Matematika yang memiliki ketertarikan kuat terhadap data dan penelitian. Bagi saya, matematika bukan 
+                    hanya teori abstrak, tetapi juga alat yang sangat bermanfaat dalam memahami pola, memodelkan fenomena, dan mengambil keputusan 
+                    berbasis data. Ketertarikan saya terletak pada bagaimana konsep-konsep matematika-seperti 
+                    statistik, aljabar, dan analisis dapat digunakan untuk menjawab pertanyaan-pertanyaan penting dalam riset dan dunia nyata.
+
+    
+                </p>
+
+                <br>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-light">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <i class="fab fa-microsoft"></i>
+                <h3>Microsoft</h3>
+                <p>Terampil mengolah data dan dokumen dengan Microsoft Office.</p>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-python"></i>
+                <h3>Python</h3>
+                <p>Mahir Python untuk riset matematis dan eksplorasi data dengan library seperti NumPy dan pandas.</p>
+            </div>
+            <div class="skill-card">
+                 <img src="C:/Users/MyBook Hype AMD/Documents/Belajar Python/portofolio/image/logo_latex.jpg"
+                alt="LaTeX" style="height: 4rem; width: auto;">
+                <h3>LaTeX</h3>
+                 <p>Berpengalaman menggunakan LaTeX dalam penulisan ilmiah, matematika, dan presentasi riset.</p>
+            </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title">My Experiences</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="C:/Users/MyBook Hype AMD/Documents/Belajar Python/portofolio/image/dashbord.jpg" alt="Dashbord Penjualan MCD">
+                <div class="portfolio-overlay">
+                    <h3>Dashboard Penjualan</h3>
+                    <p>Membuat Dashbord penjualan MCD South Amerika 2022</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="C:/Users/MyBook Hype AMD/Documents/Belajar Python/portofolio/image/Summer_school.jpeg" alt="Summer School 2025">
+                <div class="portfolio-overlay">
+                    <h3>Summer School</h3>
+                    <p>Program Summer School Silpakorn University, Thailand </p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="C:/Users/MyBook Hype AMD/Documents/Belajar Python/portofolio/image/Magang_brin.jpeg" alt="Magang Brin 2024">
+                <div class="portfolio-overlay">
+                    <h3>Magang BRIN</h3>
+                    <p>Badan Riset dan Inovasi Nasional, Pusat Riset Komputasi</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="C:/Users/MyBook Hype AMD/Documents/Belajar Python/portofolio/image/Pembicara_bali.jpeg" alt="Seminar bali">
+                <div class="portfolio-overlay">
+                    <h3>Pemakalah</h3>
+                    <p>Simanar Nasional Bali Nusra, Universitas Pendidikan Ganesha, Bali, Indonesia</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="C:/Users/MyBook Hype AMD/Documents/Belajar Python/portofolio/image/pembicara_malay.jpeg" alt="Seminar UTM">
+                <div class="portfolio-overlay">
+                    <h3>Pemakalah</h3>
+                    <p>Semianar Internasional AIAS, Universiti Teknologi Malaysia, Johor Bahru, Malaysia</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="C:/Users/MyBook Hype AMD/Documents/Belajar Python/portofolio/image/Pengabdian.jpeg" alt="Pengabdian Masyarakat">
+                <div class="portfolio-overlay">
+                    <h3>Pengabdian</h3>
+                    <p>Tim Pengabdian Masyarakat di SMAN 1 Batukliang Utara, Lombok Tengah,</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-light">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/Rendoks"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/rendi_bahtiar"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2025 Rendi Bahtiar Pratama.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="mailto:g1d021033@student.unram.ac.id"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('mailto:g1d021033@student.unram.ac.id')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send this data to a server
+            console.log({name, email, subject, message});
+            
+            // Show success message
+            alert('Thank you for your message! I will get back to you soon.');
+            
+            // Reset form
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
+
